@@ -1,0 +1,26 @@
+﻿@model hw_.net_lab3.Models.Tip;
+@{
+    ViewData["Title"] = "Tip Calculator";
+}
+
+<div class="price-quotation">
+    <h1 class="display-4">Tip Calculator</h1>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <form method="post">
+        <label for="">
+            Cost of meal:
+            <input type="text" name="cost" value="@Model.Cost">
+        </label>
+        @for (int i = 15; i < 26; i+=5)
+        {
+            <label for="" >
+                @i% Tip:
+                <span>@Model.GetTip(@i).ToString("C2")</span>
+            </label>
+        }
+        <div>
+            <input type="submit" value="Calculate" />
+            <a href="/">Clear</a>  
+        </div>
+    </form>
+</div>
